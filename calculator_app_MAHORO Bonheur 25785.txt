@@ -1,0 +1,137 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(App());
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Calculator(),
+    );
+  }
+}
+
+class Calculator extends StatefulWidget {
+  @override
+  // ignore: library_private_types_in_public_api
+  _CalculatorState createState() => _CalculatorState();
+}
+
+class _CalculatorState extends State<Calculator> {
+  Widget calcButton(String btnTxt, Color btnColor, Color textColor) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          shape: CircleBorder(),
+          padding: EdgeInsets.all(20),
+          backgroundColor: btnColor,
+        ),
+        child: Text(
+          btnTxt,
+          style: TextStyle(fontSize: 35, color: textColor),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text('Calculator'),
+        backgroundColor: Colors.black,
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            // Display of Calculator
+            const SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      '0',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white, fontSize: 100),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                calcButton('AC', Colors.grey, Colors.black),
+                calcButton('+/-', Colors.grey, Colors.black),
+                calcButton('%', Colors.grey, Colors.black),
+                calcButton('/', const Color.fromRGBO(255, 160, 0, 1), Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                calcButton('7', Colors.grey, Colors.white),
+                calcButton('8', Colors.grey, Colors.white),
+                calcButton('9', Colors.grey, Colors.white),
+                calcButton('x', const Color.fromRGBO(255, 160, 0, 1), Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                calcButton('4', Colors.grey, Colors.white),
+                calcButton('5', Colors.grey, Colors.white),
+                calcButton('6', Colors.grey, Colors.white),
+                calcButton('-', const Color.fromRGBO(255, 160, 0, 1), Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                calcButton('1', Colors.grey, Colors.white),
+                calcButton('2', Colors.grey, Colors.white),
+                calcButton('3', Colors.grey, Colors.white),
+                calcButton('+', const Color.fromRGBO(255, 160, 0, 1), Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  margin: EdgeInsets.all(10),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      shape: StadiumBorder(),
+                      padding: EdgeInsets.fromLTRB(34, 20, 128, 20),
+                      backgroundColor: Colors.grey[850],
+                    ),
+                    child: const Text(
+                      "0",
+                      style: TextStyle(fontSize: 35, color: Colors.white),
+                    ),
+                  ),
+                ),
+                calcButton('.', const Color.fromARGB(255, 48, 48, 48), Colors.white),
+                calcButton('=', const Color.fromRGBO(255, 160, 0, 1), Colors.white),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
